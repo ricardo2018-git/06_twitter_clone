@@ -6,6 +6,8 @@
 			<meta charset="UTF-8">
 		<!-- FIM Linguagem da pagina com caracter special -->
 
+			<title>Twitter clone</title>
+
 		<!-- Jquery link cdn -->
 			<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<!-- FIM Jquery link cdn -->
@@ -36,8 +38,8 @@
 							</button>
 							
 							<!-- Logo twitter -->
-								<img src="img/icone_twitter.png">
-							<!-- Logo twitter -->
+								<img src="img/icone_twitter.png" />
+							<!-- FIM Logo twitter -->
 
 						</div>
 					<!-- Botão três risquinhos -->
