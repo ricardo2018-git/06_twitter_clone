@@ -4,9 +4,9 @@
 		class db{
 
 			// --- Variaveis que contem os dados p/ conecção ---
-				private $host = 'localhost';
-				private $usuario = 'root';
-				private $senha = '';
+				private $host     = 'localhost';
+				private $usuario  = 'root';
+				private $senha    = '';
 				private $database = 'twitter_clone2';
 			// --- FIM Variaveis que contem os dados p/ conecção ---
 
@@ -14,15 +14,16 @@
 				public function conecta_mysql(){
 
 					// --- Cria conecção
-					$con = mysqli_connect($this -> host, $this -> usuario, $this -> senha, $this -> database);
+					$con = mysqli_connect($this->host, $this->usuario, $this->senha, $this->database);
 
 					// --- Ajusta o charset de comunicação entre a aplicação e o banco de dados
-					mysqli_set_charset($con, 'utf-8');
+					mysqli_set_charset($con, 'utf8');
 
 					// -- Verifica se houve erro de conexão
-					if(mysqli_connect_erro()){	//retorno, != de 0 existe erro
-						echo 'Erro ao tentar se conectar com o BD MySql: '.mysqli_connect_error();
-					}
+						if(mysqli_connect_errno()){	//retorno, != de 0 existe erro
+							echo 'Erro ao tentar se conectar com o BD MySql: '.mysqli_connect_error();
+						}
+					// -- FIM Verifica se houve erro de conexão
 
 					return $con;
 
