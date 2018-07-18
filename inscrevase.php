@@ -63,7 +63,7 @@
 					<h3>Inscreva-se já.</h3><br/>
 
 					<!-- Formulario de inscrição -->
-						<form method="post" action="#" id="formCadastrarse">
+						<form method="post" action="registra_usuario.php" id="formCadastrarse">
 
 							<!-- Campo de cadastro Usuario -->
 								<div class="form-group">
