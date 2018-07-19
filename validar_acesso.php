@@ -18,7 +18,7 @@
 	// --- FIM Estância a classe db em nossa pg, e cria um objeto --
 
 	// --- Executa a função de conexão do nosso objeto, guarda seu retorno em uma variavel link ---
-		$link  = $objDb -> conecta_mysql();
+		$link  = $objDb->conecta_mysql();
 	// --- FIM Executa a função de conexão do nosso objeto, guarda seu retorno em uma variavel link ---
 
 	// --- Executa o comando select e retorna false ou resoucer ---
@@ -31,7 +31,12 @@
 			// --- Recebe o resoucer e coloca em um array e atribuimos a uma variavel ---
 			$dados_usuario = mysqli_fetch_array($resultado_id);
 			
-			var_dump($dados_usuario);
+			// ---  ---
+			if(isset($dados_usuario['usuario'])){
+				echo 'usuário existe';
+			}else{
+				echo 'usuário não existe';
+			}
 
 		}else{
 
