@@ -58,7 +58,7 @@
 													<br/>
 
 												<!-- Formulario para logar-se -->
-													<form method="post" action="" id="formLogin">
+													<form method="post" action="validar_acesso.php" id="formLogin">
 														<div class="form-group">
 
 															<!-- Campo valida usuario -->

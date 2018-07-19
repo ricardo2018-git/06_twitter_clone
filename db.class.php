@@ -1,19 +1,19 @@
 <?php
 
-	// --- Esta classe faz a conecção com banco de dados ---
+	// --- Esta classe faz a conexão com banco de dados ---
 		class db{
 
-			// --- Variaveis que contem os dados p/ conecção ---
+			// --- Variaveis que contem os dados p/ conexão ---
 				private $host     = 'localhost';
 				private $usuario  = 'root';
 				private $senha    = '';
 				private $database = 'twitter_clone2';
-			// --- FIM Variaveis que contem os dados p/ conecção ---
+			// --- FIM Variaveis que contem os dados p/ conexão ---
 
-			// --- Função que realiza a conecção com o bd ---
+			// --- Função que realiza a conexão com o bd ---
 				public function conecta_mysql(){
 
-					// --- Cria conecção
+					// --- Cria conexão
 					$con = mysqli_connect($this->host, $this->usuario, $this->senha, $this->database);
 
 					// --- Ajusta o charset de comunicação entre a aplicação e o banco de dados
@@ -28,8 +28,8 @@
 					return $con;
 
 				}
-			// --- FIM Função que realiza a conecção com o bd ---
+			// --- FIM Função que realiza a conexão com o bd ---
 
 		}
-	// --- FIM Esta classe faz a conecção com banco de dados ---
+	// --- FIM Esta classe faz a conexão com banco de dados ---
 ?>
