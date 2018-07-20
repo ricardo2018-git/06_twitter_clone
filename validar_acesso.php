@@ -1,5 +1,9 @@
 <?php
 	
+	// --- Sempre em primeiro lugar, nunca depois de algum comando de saida. Inicia altenticação de usuario ---
+		session_start();
+	// --- FIM Sempre em primeiro lugar, nunca depois de algum comando de saida. Inicia altenticação de usuario ---
+
 	// --- Importamos a pg db.class.php p/ utilizarmos suas funções e metodos ---
 		require_once('db.class.php');
 	// --- FIM Importamos a pg db.class.php p/ utilizarmos suas funções e metodos ---
@@ -10,7 +14,7 @@
 	// --- FIM Recebe informaçõe do usuario que quer se logar no sistema ---
 
 	// --- Faz uma busca no bd p/ saber se é valido as informações passada pelo usuario ---
-		$sql = "SELECT * FROM usuarios WHERE db_usuario_usu = '$usuario' AND db_senha_usu = '$senha'";
+		$sql = "SELECT db_usuario_usu, db_email_usu FROM usuarios WHERE db_usuario_usu = '$usuario' AND db_senha_usu = '$senha'";
 	// --- FIM Faz uma busca no bd p/ saber se é valido as informações passada pelo usuario ---
 
 	// --- Estância a classe db em nossa pg, e cria um objeto --
@@ -33,13 +37,22 @@
 			
 			// --- verifica se no retorno do array no index db_usuario_usu, esta preenchido ---
 				if(isset($dados_usuario["db_usuario_usu"])){
-					echo 'usuário existe';
+					
+					// --- Cria var $_SESSION, p/ sabermos se realmente o usuario fez login ---
+						$_SESSION['usuario'] = $dados_usuario["db_usuario_usu"];
+						$_SESSION['email']   = $dados_usuario["db_email_usu"];
+					// --- Cria var $_SESSION, p/ sabermos se realmente o usuario fez login ---
+
+					// --- Redireciona p/ pg restrita do nosso sistema ---
+						header('Location: home.php');
+					// --- FIM Redireciona p/ pg restrita do nosso sistema ---
+
 				}else{
 					
 					// --- Redireciona pg p/ index, passando um parametro via get ---
 						header('Location: index.php?erro=1');
 					// --- FIMRedireciona pg p/ index, passando um parametro via get ---
-						
+
 				}
 			// --- FIM verifica se no retorno do array no index db_usuario_usu, esta preenchido ---
 
