@@ -7,7 +7,7 @@
 	// --- Recebe os dados do usuario, que vai se cadastrar no sistema ---
 		$usuario = $_POST['usuario'];
 		$email   = $_POST['email'];
-		$senha   = $_POST['senha'];
+		$senha   = md5($_POST['senha']);	// --- md5 criptografa a senha recebida do usuario ---
 	// --- FIM Recebe os dados do usuario, que vai se cadastrar no sistema ---
 
 	// --- Estância a classe db em nossa pg, e cria um objeto --

@@ -10,7 +10,7 @@
 
 	// --- Recebe informaçõe do usuario que quer se logar no sistema ---
 		$usuario = $_POST['usuario'];
-		$senha   = $_POST['senha'];
+		$senha   = md5($_POST['senha']);	// --- Criptografa a senha do usuario ---
 	// --- FIM Recebe informaçõe do usuario que quer se logar no sistema ---
 
 	// --- Faz uma busca no bd p/ saber se é valido as informações passada pelo usuario ---
