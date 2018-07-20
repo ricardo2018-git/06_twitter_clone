@@ -24,7 +24,55 @@
 		<!-- FIM Bootstrap link cdn -->
 
 		<!-- Meu javaScript -->
+			<script>
+				// -- Capitura o clique do botão enviar, p/ validar se os campos foram preenchidos --
+					$(document).ready(function(){
 
+						// -- Capita o clique do botão Entrar --
+							$('#btn_login').click(function(){
+								
+								var campo_vazio = false;
+
+								// -- varifica se o campo Login esta vezio --
+									if($('#campo_usuario').val() == ''){
+
+										// -- Borda do campo fica vermelha se estiver vazio  --
+											$('#campo_usuario').css({'border-color': '#A94442'});
+											campo_vazio = true;
+										// -- FIM Borda do campo fica vermelha se estiver vazio  --
+
+									}else{
+										// -- Borda do campo fica cinza se estiver preenchido  --
+											$('#campo_usuario').css({'border-color': '#CCC'});
+										// -- FIM Borda do campo fica cinza se estiver preenchido  --
+									}
+								// -- FIM varifica se o campo Login esta vezio --	
+
+								// -- varifica se o campo Senha esta vezio --
+									if($('#campo_senha').val() == ''){
+
+										// -- Borda do campo fica vermelha se estiver vazio  --
+											$('#campo_senha').css({'border-color': '#A94442'});
+											campo_vazio = true;
+										// -- FIM Borda do campo fica vermelha se estiver vazio  --
+
+									}else{
+										// -- Borda do campo fica cinza se estiver preenchido  --
+											$('#campo_senha').css({'border-color': '#CCC'});
+										// -- FIM Borda do campo fica cinza se estiver preenchido  --
+									}
+								// -- FIM varifica se o campo Senha esta vezio --
+
+								// -- Se algum campo estiver sem preencher o JS ñ é enviado --
+									if(campo_vazio) return false;
+								// -- FIM Se algum campo estiver sem preencher o JS ñ é enviado --
+
+							});
+						// -- FIM Capita o clique do botão Entrar --
+
+					});
+				// -- FIM Capitura o clique do botão enviar, p/ validar se os campos foram preenchidos --
+			</script>
 		<!-- FIM Meu javaScript -->
 
 	</head>
