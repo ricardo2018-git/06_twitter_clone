@@ -29,19 +29,24 @@
 		if($resultado_id){
 
 			// --- Recebe o resoucer e coloca em um array e atribuimos a uma variavel ---
-			$dados_usuario = mysqli_fetch_array($resultado_id);
+				$dados_usuario = mysqli_fetch_array($resultado_id);
 			
-			// ---  ---
-			if(isset($dados_usuario['usuario'])){
-				echo 'usuário existe';
-			}else{
-				echo 'usuário não existe';
-			}
+			// --- verifica se no retorno do array no index db_usuario_usu, esta preenchido ---
+				if(isset($dados_usuario["db_usuario_usu"])){
+					echo 'usuário existe';
+				}else{
+					
+					// --- Redireciona pg p/ index, passando um parametro via get ---
+						header('Location: index.php?erro=1');
+					// --- FIMRedireciona pg p/ index, passando um parametro via get ---
+						
+				}
+			// --- FIM verifica se no retorno do array no index db_usuario_usu, esta preenchido ---
 
 		}else{
 
 			// --- Se caso houver um erro ---
-			echo'Erro na excução da consulta, favor entrar em contato com a adm do site!';
+				echo'Erro na excução da consulta, favor entrar em contato com a adm do site!';
 
 		}
 	// --- FIM Validação do select no banco ---

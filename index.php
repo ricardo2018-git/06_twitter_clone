@@ -1,3 +1,10 @@
+<?php
+	
+	// --- login e senha invalido, isset atribui 1 p/ erro no login e 0 se não foi tentado logar ---
+		$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+	// --- FIM login e senha invalido, isset atribui 1 p/ erro no login e 0 se não foi tentado logar ---
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -48,7 +55,7 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="inscrevase.php">Inscrever-se</a></li>
-								<li class="">
+								<li class="<?= $erro == 1? 'open' : '' ?>">	<!-- Se $error == 1, mantem submenu aberto para avisualizar mensagem de login invalido -->
 									<a id="entrar" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrar</a>
 
 									<!-- Submenu dentro do menu Entrar -->
@@ -80,6 +87,14 @@
 														</div>
 													</form>
 												<!-- FIM Formulario para logar-se -->
+												
+												<!-- Valida se houve erro ao tentar se logar -->
+													<?php
+														if($erro == 1){
+															echo '<font color="red">Usuário e ou senha inválido(s)</font>';
+														}
+													?>
+												<!-- FIM Valida se houve erro ao tentar se logar -->
 
 											</div>
 										</ul>
