@@ -55,9 +55,29 @@
 		}else{
 			echo 'Erro ao tentar localizar o resgistro de usuário';
 		}
-		
-		die();
 	// --- FIM Verifica se o e-mail ja foi cadastrado ---
+
+	// --- Verifica se usuario ou email ja foi cadastrado ---
+	if($usuario_existe || $email_existe){
+		
+		$retorno_get = '';
+
+		// --- Se usuario já existir atribui um parametro a variavel ---
+		if($usuario_existe){
+			$retorno_get.= "erro_usuario=1&";
+		}
+
+		// --- Se email já existir atribui um outro parametro a variavel ---
+		if($email_existe){
+			$retorno_get.= "erro_email=1&";
+		}
+
+		// -- Redireciona p/ pg com algumas config. na url --
+		header('Location: inscrevase.php?'.$retorno_get);
+
+		// -- encerra a execução da pg aqui --
+		die();
+	}
 
 	// --- Variavel que vai passar o comando de insert p/ o BD ---
 		$sql = "INSERT INTO usuarios(db_usuario_usu, db_email_usu, db_senha_usu) VALUES('$usuario', '$email', '$senha')";

@@ -1,3 +1,11 @@
+<?php
+	
+	// -- Verifica se existe valor p/ variaveis caso não ele atribui 0 assim ñ exibe erro --
+		$erro_usuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario'] : 0;
+		$erro_email   = isset($_GET['erro_email'])   ? $_GET['erro_email']   : 0;
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
@@ -68,12 +76,26 @@
 							<!-- Campo de cadastro Usuario -->
 								<div class="form-group">
 									<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
+									<?php
+									
+										// -- Se true, emite mensagem --
+										if($erro_usuario){	// 1=true && 0=false
+											echo '<font style="color: red">Usuário já existe</font>';
+										}
+									?>
 								</div>
 							<!-- FIM Campo de cadastro Usuario -->
 
 							<!-- Campo de cadastro Email -->
 								<div class="form-group">
 									<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+									<?php
+
+										// -- Se true, emite mensagem --
+										if($erro_email){	// 1=true && 0=false
+											echo '<font style="color: red">E-mail já existe</font>';
+										}
+									?>
 								</div>
 							<!-- FIM Campo de cadastro Email -->
 

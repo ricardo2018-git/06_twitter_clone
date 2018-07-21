@@ -1,5 +1,5 @@
 <?php
-	
+
 	// --- login e senha invalido, isset atribui 1 p/ erro no login e 0 se não foi tentado logar ---
 		$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
 	// --- FIM login e senha invalido, isset atribui 1 p/ erro no login e 0 se não foi tentado logar ---
