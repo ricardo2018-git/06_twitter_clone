@@ -10,6 +10,11 @@
 		$senha   = md5($_POST['senha']);	// --- md5 criptografa a senha recebida do usuario ---
 	// --- FIM Recebe os dados do usuario, que vai se cadastrar no sistema ---
 
+	// --- Variaveis p/ controle de usuarios q ja foram cadastrados ---
+		$usuario_existe = false;
+		$email_existe   = false;
+	// --- Variaveis p/ controle de usuarios q ja foram cadastrados ---
+
 	// --- Estância a classe db em nossa pg, e cria um objeto --
 		$objDb = new db();
 	// --- FIM Estância a classe db em nossa pg, e cria um objeto --
@@ -27,9 +32,7 @@
 			$dados_usuario = mysqli_fetch_array($resultado_id);
 
 			if(isset($dados_usuario['db_usuario_usu'])){
-				echo 'Usuário já cadastrado';
-			}else{
-				echo 'Usuário não cadastrado, pode cadastra-lo!';
+				$usuario_existe = true;
 			}
 			
 		}else{
@@ -46,14 +49,13 @@
 			$dados_usuario = mysqli_fetch_array($resultado_id);
 
 			if(isset($dados_usuario['db_email_usu'])){
-				echo 'E-mail já cadastrado';
-			}else{
-				echo 'E-mail não cadastrado, pode cadastra-lo!';
+				$email_existe = true;
 			}
 			
 		}else{
 			echo 'Erro ao tentar localizar o resgistro de usuário';
 		}
+		
 		die();
 	// --- FIM Verifica se o e-mail ja foi cadastrado ---
 
