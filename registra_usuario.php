@@ -18,6 +18,45 @@
 		$link = $objDb -> conecta_mysql();
 	// --- FIM Executa a função de conexão do nosso objeto, guarda seu retorno em uma variavel link ---
 
+	// --- Verifica se o usuário ja foi cadastrado ---
+		$sql = " SELECT * FROM usuarios WHERE db_usuario_usu = '$usuario' ";// --- Busca no bd se ja foi cadastrado ---
+
+		// --- Varifica se houve erro durante a consulta, caso não ---
+		if($resultado_id = mysqli_query($link, $sql)){	//guarda retorno na variavel $resultado_id
+			
+			$dados_usuario = mysqli_fetch_array($resultado_id);
+
+			if(isset($dados_usuario['db_usuario_usu'])){
+				echo 'Usuário já cadastrado';
+			}else{
+				echo 'Usuário não cadastrado, pode cadastra-lo!';
+			}
+			
+		}else{
+			echo 'Erro ao tentar localizar o resgistro de usuário';
+		}
+	// --- FIIM Verifica se o usuário ja foi cadastrado ---
+
+	// --- Verifica se o e-mail ja foi cadastrado ---
+		$sql = " SELECT * FROM usuarios WHERE db_email_usu = '$email' ";// --- Busca no bd se ja foi cadastrado ---
+
+		// --- Varifica se houve erro durante a consulta, caso não ---
+		if($resultado_id = mysqli_query($link, $sql)){	//guarda retorno na variavel $resultado_id
+			
+			$dados_usuario = mysqli_fetch_array($resultado_id);
+
+			if(isset($dados_usuario['db_email_usu'])){
+				echo 'E-mail já cadastrado';
+			}else{
+				echo 'E-mail não cadastrado, pode cadastra-lo!';
+			}
+			
+		}else{
+			echo 'Erro ao tentar localizar o resgistro de usuário';
+		}
+		die();
+	// --- FIM Verifica se o e-mail ja foi cadastrado ---
+
 	// --- Variavel que vai passar o comando de insert p/ o BD ---
 		$sql = "INSERT INTO usuarios(db_usuario_usu, db_email_usu, db_senha_usu) VALUES('$usuario', '$email', '$senha')";
 	// --- Variavel que vai passar o comando de insert p/ o BD ---
