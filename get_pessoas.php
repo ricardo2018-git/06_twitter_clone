@@ -42,6 +42,15 @@
 					// -- Gera uma lista no html da pg Procurar_pessoas contendo as informações do bd --
 						echo '<a href="#" class="list-group-item">';
 							echo '<strong>'.$registro['db_usuario_usu'].'</strong> <small> - '.$registro['db_email_usu'].' </small>';
+							echo '<p class="lista-group-item-text pull-right">';
+
+								// -- Botões para seguir e deixar de seguir --
+									echo '<button type="button" class="btn btn-default">Seguir</button>';
+								// -- FIM Botões para seguir e deixar de seguir --
+							echo '</p>';
+
+							// -- Esta classe organiza o botões dentro de cada celula corretamente --
+							echo '<div class="clearfix"></div>';
 						echo '</a>';
 					// -- FIM Gera uma lista no html da pg Procurar_pessoas contendo as informações do bd --
 				}
