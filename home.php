@@ -36,7 +36,7 @@
 		<!-- Meu javaScript -->
 			<script type="text/javascript">
 
-				// -- Verifica se o documento foi carregado, Se sim executa uma função --
+				// -- Verifica se o documento foi carregado, Se sim executa funções --
 					$(document).ready(function(){
 
 						// -- Capitura o clique do botão tweet --
@@ -80,8 +80,28 @@
 								// -- FIM Valida se há informações no campo tweet --
 							});
 						// -- FIM Capitura o clique do botão tweet --
+
+						// -- Função para atualizar os post tweet --
+							function atualizaTweet(){
+
+								// -- Requisição ajax para carregar todas mensagem do bd --
+									$.ajax({
+										url: 'get_tweet.php',
+										success: function(data){
+
+											// -- Recebe informações do get_tweet pelo data e insere no campo #tweets da pg home --
+											$('#tweets').html(data);
+										}
+									});
+								// -- FIM Requisição ajax para carregar todas mensagem do bd --
+							}
+						// -- FIM Função para atualizar os post tweet --
+
+						// -- Executa função p/ atualizar mensagens tweet --
+							atualizaTweet();
+
 					});
-				// -- FIM Verifica se o documento foi carregado, Se sim executa uma função --
+				// -- FIM Verifica se o documento foi carregado, Se sim executa funções --
 			</script>
 		<!-- FIM Meu javaScript -->
 
@@ -170,8 +190,14 @@
 								</div>
 							</div>
 						<!-- FIM Painel -->
+
+						<!-- Camo dos twets postados -->
+							<div id="tweets" class="list-group">
+								
+							</div>
+						<!-- FIM Camo dos twets postados -->
 					</div>
-				<!-- Divide em coluna do centro tamanho 6 -->
+				<!-- FIM Divide em coluna do centro tamanho 6 -->
 				
 				<!-- Divide em coluna da direita tamanho 3 -->	
 					<div class="col-md-3">
@@ -184,7 +210,7 @@
 							</div>
 						<!-- Fim Painel -->
 					</div>
-				<!-- Divide em coluna da direita tamanho 3 -->	
+				<!-- FIM Divide em coluna da direita tamanho 3 -->	
 
 			</div>
 		<!-- FIM Corpo da pagina -->
