@@ -34,7 +34,26 @@
 		<!-- FIM Bootstrap link cdn -->
 
 		<!-- Meu javaScript -->
+			<script type="text/javascript">
 
+				// -- Verifica se o documento foi carregado, Se sim executa uma função --
+					$(document).ready(function(){
+
+						// -- Capitura o clique do botão tweet --
+							$('#btn_tweet').click(function(){
+								
+								// -- Valida se há informações no campo tweet --
+									if($('#texto_tweet').val().length > 0){
+										alert('Campo está preenchido !!');
+									}else{
+										alert('Preencha o campo tweet');
+									}
+								// -- FIM Valida se há informações no campo tweet --
+							});
+						// -- FIM Capitura o clique do botão tweet --
+					});
+				// -- FIM Verifica se o documento foi carregado, Se sim executa uma função --
+			</script>
 		<!-- FIM Meu javaScript -->
 
 	</head>
@@ -113,9 +132,9 @@
 
 									<!-- Alinha caixa de texto e botão -->
 										<div class="input-group">
-											<input type="text" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140"/>
+											<input type="text" id="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140"/>
 											<span class="input-group-btn">
-												<button class="btn btn-default" type="button">Tweet</button>
+												<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
 											</span>
 										</div>
 									<!-- FIM Alinha caixa de texto e botão -->
