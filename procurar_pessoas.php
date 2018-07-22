@@ -40,16 +40,16 @@
 					$(document).ready(function(){
 
 						// -- Capitura o clique do botão tweet --
-							$('#btn_tweet').click(function(){
+							$('#btn_procurar_pessoa').click(function(){
 								
 								// -- Valida se há informações no campo tweet --
-									if($('#texto_tweet').val().length > 0){
+									if($('#nome_pessoa').val().length > 0){
 										
 										// -- Requisição pg via Ajax do Jquery --
 											$.ajax({
 
 												// -- Para onde vai as informações --
-												url: 'inclui_tweet.php',
+												url: 'get_pessoas.php',
 
 												// -- Metodo de envio --
 												method: 'post',
@@ -61,45 +61,22 @@
 												//},
 
 												// -- Uma Outra forma: Envia um formulario inteiro, que contenha 'name' em seus campos--
-												data: $('#form_tweet').serialize(),
+												data: $('#form_procurar_pessoas').serialize(),
 
 												// -- Pega conteudo de data e envia p/ url  --
 												success: function(data){
 
-													// -- Limpa o campo tweet depois q inseri no banco --
-													$('#texto_tweet').val('');
-
-													// -- Atualiza a pg automaticamente --
-													atualizaTweet();
+													// -- Exibe nomes na pg procurar pessoas --
+													$('#pessoas').html(data);
 												}
 											});
 										// -- FIM Requisição pg via Ajax do Jquery --
 									}else{
-										alert('Preencha o campo tweet');
+										alert('Preencha o campo Procurar pessoa');
 									}
 								// -- FIM Valida se há informações no campo tweet --
 							});
 						// -- FIM Capitura o clique do botão tweet --
-
-						// -- Função para atualizar os post tweet --
-							function atualizaTweet(){
-
-								// -- Requisição ajax para carregar todas mensagem do bd --
-									$.ajax({
-										url: 'get_tweet.php',
-										success: function(data){
-
-											// -- Recebe informações do get_tweet pelo data e insere no campo #tweets da pg home --
-											$('#tweets').html(data);
-										}
-									});
-								// -- FIM Requisição ajax para carregar todas mensagem do bd --
-							}
-						// -- FIM Função para atualizar os post tweet --
-
-						// -- Executa função p/ atualizar mensagens tweet --
-							atualizaTweet();
-
 					});
 				// -- FIM Verifica se o documento foi carregado, Se sim executa funções --
 			</script>
@@ -132,6 +109,7 @@
 					<!-- menu da Barra -->
 						<div id="navbar" class="navbar-collapse colapse">
 							<ul class="nav navbar-nav navbar-right">
+								<li><a href="home.php">Home</a></li>
 								<li><a href="sair.php">Sair</a></li>
 							</ul>
 						</div>
@@ -180,10 +158,10 @@
 								<div class="panel-body">
 
 									<!-- Alinha caixa de texto e botão -->
-										<form  id="form_tweet" class="input-group">
-											<input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140"/>
+										<form  id="form_procurar_pessoas" class="input-group">
+											<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Quem você está procurando?" maxlength="140"/>
 											<span class="input-group-btn">
-												<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
+												<button class="btn btn-default" id="btn_procurar_pessoa" type="button">Procurar</button>
 											</span>
 										</form>
 									<!-- FIM Alinha caixa de texto e botão -->
@@ -191,11 +169,11 @@
 							</div>
 						<!-- FIM Painel -->
 
-						<!-- Camo dos twets postados -->
-							<div id="tweets" class="list-group">
+						<!-- Campo com nome das pessoas a ser seguida -->
+							<div id="pessoas" class="list-group">
 								
 							</div>
-						<!-- FIM Camo dos twets postados -->
+						<!-- FIM Campo com nome das pessoas a ser seguida -->
 					</div>
 				<!-- FIM Divide em coluna do centro tamanho 6 -->
 				
@@ -205,7 +183,7 @@
 						<!-- Painel -->
 							<div class="panel panel-default">
 								<div class="panel-body">
-									<h4><a href="procurar_pessoas.php">Procurar por pessoas</a></h4>
+									
 								</div>
 							</div>
 						<!-- Fim Painel -->
