@@ -69,8 +69,8 @@
 													// -- Limpa o campo tweet depois q inseri no banco --
 													$('#texto_tweet').val('');
 
-													// -- Mensagem que foi inserido no bd --
-													alert('Tweet Ok');
+													// -- Atualiza a pg automaticamente --
+													atualizaTweet();
 												}
 											});
 										// -- FIM Requisição pg via Ajax do Jquery --
