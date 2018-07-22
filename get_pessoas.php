@@ -45,7 +45,7 @@
 							echo '<p class="lista-group-item-text pull-right">';
 
 								// -- Botões para seguir e deixar de seguir --
-									echo '<button type="button" class="btn btn-default">Seguir</button>';
+									echo '<button type="button" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
 								// -- FIM Botões para seguir e deixar de seguir --
 							echo '</p>';
 

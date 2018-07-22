@@ -68,6 +68,35 @@
 
 													// -- Exibe nomes na pg procurar pessoas --
 													$('#pessoas').html(data);
+
+													// -- Ao clicar no botão seguir, aciona uma função--
+														$('.btn_seguir').click(function(){
+
+															// -- Capitura o id da pessoa que vc quer seguir, passado pelo data --
+															var id_usuario = $(this).data('id_usuario');
+
+															// -- Requisição ajax --
+																$.ajax({
+
+																	// -- Pra onde vai --
+																	url: 'seguir.php',
+
+																	// -- Como vai --
+																	method: 'post',
+
+																	// -- Parametros que vou passar --
+																	data: { seguir_id_usuario:  id_usuario },		// Indice e valor
+
+																	// -- Se der certo --
+																		success: function(data){
+																			alert('Registro efetuado com sucesso!');
+																		}
+																	// -- FIM Se der certo --
+																});
+															// -- FIM Requisição ajax --
+
+														});
+													// -- FIM Ao clicar no botão seguir, aciona uma função--
 												}
 											});
 										// -- FIM Requisição pg via Ajax do Jquery --
