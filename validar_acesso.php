@@ -14,7 +14,7 @@
 	// --- FIM Recebe informaçõe do usuario que quer se logar no sistema ---
 
 	// --- Faz uma busca no bd p/ saber se é valido as informações passada pelo usuario ---
-		$sql = "SELECT db_usuario_usu, db_email_usu FROM usuarios WHERE db_usuario_usu = '$usuario' AND db_senha_usu = '$senha'";
+		$sql = "SELECT db_id_usu, db_usuario_usu, db_email_usu FROM usuarios WHERE db_usuario_usu = '$usuario' AND db_senha_usu = '$senha'";
 	// --- FIM Faz uma busca no bd p/ saber se é valido as informações passada pelo usuario ---
 
 	// --- Estância a classe db em nossa pg, e cria um objeto --
@@ -39,6 +39,7 @@
 				if(isset($dados_usuario["db_usuario_usu"])){
 					
 					// --- Cria var $_SESSION, p/ sabermos se realmente o usuario fez login ---
+						$_SESSION['id']      = $dados_usuario["db_id_usu"];
 						$_SESSION['usuario'] = $dados_usuario["db_usuario_usu"];
 						$_SESSION['email']   = $dados_usuario["db_email_usu"];
 					// --- Cria var $_SESSION, p/ sabermos se realmente o usuario fez login ---

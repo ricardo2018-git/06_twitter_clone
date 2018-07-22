@@ -44,7 +44,36 @@
 								
 								// -- Valida se há informações no campo tweet --
 									if($('#texto_tweet').val().length > 0){
-										alert('Campo está preenchido !!');
+										
+										// -- Requisição pg via Ajax do Jquery --
+											$.ajax({
+
+												// -- Para onde vai as informações --
+												url: 'inclui_tweet.php',
+
+												// -- Metodo de envio --
+												method: 'post',
+
+												// -- Uma forma: O que vai, com um index e seu conteúdo --
+												//data: { 
+												//	texto_tweet: 				// -- Este é o index --
+												//	$('#texto_tweet').val() 	// -- Conteúdo do campo tweet, pego pelo id --
+												//},
+
+												// -- Uma Outra forma: Envia um formulario inteiro, que contenha 'name' em seus campos--
+												data: $('#form_tweet').serialize(),
+
+												// -- Pega conteudo de data e envia p/ url  --
+												success: function(data){
+
+													// -- Limpa o campo tweet depois q inseri no banco --
+													$('#texto_tweet').val('');
+
+													// -- Mensagem que foi inserido no bd --
+													alert('Tweet Ok');
+												}
+											});
+										// -- FIM Requisição pg via Ajax do Jquery --
 									}else{
 										alert('Preencha o campo tweet');
 									}
@@ -131,12 +160,12 @@
 								<div class="panel-body">
 
 									<!-- Alinha caixa de texto e botão -->
-										<div class="input-group">
-											<input type="text" id="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140"/>
+										<form  id="form_tweet" class="input-group">
+											<input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140"/>
 											<span class="input-group-btn">
 												<button class="btn btn-default" id="btn_tweet" type="button">Tweet</button>
 											</span>
-										</div>
+										</form>
 									<!-- FIM Alinha caixa de texto e botão -->
 								</div>
 							</div>
