@@ -45,11 +45,11 @@
 							echo '<p class="lista-group-item-text pull-right">';
 
 								// -- Botão para seguir usuarios--
-									echo '<button type="button" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
+									echo '<button type="button" id="btn_seguir_'.$registro['db_id_usu'].'" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
 								// -- FIM Botões para seguir usuarios--
 								
 								// -- Botões para deixar de seguir usuarios --
-									echo '<button type="button" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Deixar de Seguir</button>';
+									echo '<button type="button" id="btn_deixar_seguir_'.$registro['db_id_usu'].'" style="display: none" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Deixar de Seguir</button>';
 								// -- FIM Botões para deixar de seguir usuarios --
 
 							echo '</p>';

@@ -75,6 +75,12 @@
 															// -- Capitura o id da pessoa que vc quer seguir, passado pelo data --
 															var id_usuario = $(this).data('id_usuario');
 
+															// -- Oculta o botão seguir --
+															$('#btn_seguir_'+id_usuario).hide();
+
+															// -- Habilita botão deixar de seguir --
+															$('#btn_deixar_seguir_'+id_usuario).show();
+
 															// -- Requisição ajax --
 																$.ajax({
 
@@ -103,6 +109,12 @@
 
 															// -- Capitura o id da pessoa que vc quer seguir, passado pelo data --
 															var id_usuario = $(this).data('id_usuario');
+
+															// -- Oculta o botão seguir --
+															$('#btn_seguir_'+id_usuario).show();
+
+															// -- Habilita botão deixar de seguir --
+															$('#btn_deixar_seguir_'+id_usuario).hide();
 
 															// -- Requisição ajax --
 																$.ajax({
