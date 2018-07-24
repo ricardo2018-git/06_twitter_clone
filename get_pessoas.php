@@ -44,9 +44,14 @@
 							echo '<strong>'.$registro['db_usuario_usu'].'</strong> <small> - '.$registro['db_email_usu'].' </small>';
 							echo '<p class="lista-group-item-text pull-right">';
 
-								// -- Botões para seguir e deixar de seguir --
+								// -- Botão para seguir usuarios--
 									echo '<button type="button" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
-								// -- FIM Botões para seguir e deixar de seguir --
+								// -- FIM Botões para seguir usuarios--
+								
+								// -- Botões para deixar de seguir usuarios --
+									echo '<button type="button" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Deixar de Seguir</button>';
+								// -- FIM Botões para deixar de seguir usuarios --
+
 							echo '</p>';
 
 							// -- Esta classe organiza o botões dentro de cada celula corretamente --

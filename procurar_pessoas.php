@@ -97,6 +97,34 @@
 
 														});
 													// -- FIM Ao clicar no botão seguir, aciona uma função--
+
+													// -- Ao clicar no botão Deixar de seguir, aciona uma função--
+														$('.btn_deixar_seguir').click(function(){
+
+															// -- Capitura o id da pessoa que vc quer seguir, passado pelo data --
+															var id_usuario = $(this).data('id_usuario');
+
+															// -- Requisição ajax --
+																$.ajax({
+
+																	// -- Pra onde vai --
+																	url: 'deixar_seguir.php',
+
+																	// -- Como vai --
+																	method: 'post',
+
+																	// -- Parametros que vou passar --
+																	data: { deixar_seguir_id_usuario:  id_usuario },		// Indice e valor
+
+																	// -- Se der certo --
+																		success: function(data){
+																			alert('Registro removido com sucesso!');
+																		}
+																	// -- FIM Se der certo --
+																});
+															// -- FIM Requisição ajax --
+														});
+													// -- Ao clicar no botão Deixar de seguir, aciona uma função--
 												}
 											});
 										// -- FIM Requisição pg via Ajax do Jquery --
