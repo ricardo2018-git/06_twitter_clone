@@ -27,7 +27,8 @@
 	// -- Comando select todo post, ordenado por data e hora --
 	$sql = " SELECT DATE_FORMAT(t.data_inclusao_twe, '%d %b %Y %T') AS data_inclusao_formatada, t.tweet_twe, u.db_usuario_usu
 				 FROM tweet AS t JOIN usuarios AS u ON(t.id_usuario_twe = u.db_id_usu)
-					WHERE id_usuario_twe = $id_usuario ORDER BY data_inclusao_twe DESC; ";
+					WHERE id_usuario_twe = $id_usuario 
+						OR id_usuario_twe IN( SELECT seguindo_id_usuario_usuSeg FROM usuarios_seguidores WHERE id_usuario_usuSeg = $id_usuario )	ORDER BY data_inclusao_twe DESC ";
 
 	// -- Conecta-se ao banco e executa o Select, guarda na variavel --
 	$resultado_id = mysqli_query($link, $sql);

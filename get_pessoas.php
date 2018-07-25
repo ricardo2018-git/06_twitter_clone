@@ -28,7 +28,11 @@
 	$link = $objDb -> conecta_mysql();
 
 	// -- Comando select todo post, ordenado por data e hora --
-	$sql = " SELECT * FROM usuarios WHERE db_usuario_usu LIKE '%$nome_pessoa%' AND db_id_usu != $id_usuario";
+	$sql = " SELECT u.*, us.*
+				FROM usuarios AS u 
+					LEFT JOIN usuarios_seguidores AS us
+						ON(us.id_usuario_usuSeg = $id_usuario AND u.db_id_usu = us.seguindo_id_usuario_usuSeg)
+							WHERE u.db_usuario_usu LIKE '%$nome_pessoa%' AND u.db_id_usu != $id_usuario ";
 
 	// -- Conecta-se ao banco e executa o Select, guarda na variavel --
 	$resultado_id = mysqli_query($link, $sql);
@@ -44,12 +48,26 @@
 							echo '<strong>'.$registro['db_usuario_usu'].'</strong> <small> - '.$registro['db_email_usu'].' </small>';
 							echo '<p class="lista-group-item-text pull-right">';
 
+								// -- Var recebe 's' se conter registro, e 'n' se estiver vazia --
+								$esta_seguindo_usuario_sn = isset($registro['id_usuario_seguidor_usuSeg']) && !empty($registro['id_usuario_seguidor_usuSeg']) ? 's' : 'n';
+
+								// -- Verificar se esta seguindo ou não o usuario --
+									$btn_seguir_display = 'block';
+									$btn_deixar_seguir_display = 'block';
+
+									if($esta_seguindo_usuario_sn == 'n'){
+										$btn_deixar_seguir_display = 'none';
+									}else{
+										$btn_seguir_display = 'none';
+									}
+								// -- FIM Verificar se esta seguindo ou não o usuario --
+
 								// -- Botão para seguir usuarios--
-									echo '<button type="button" id="btn_seguir_'.$registro['db_id_usu'].'" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
+									echo '<button type="button" id="btn_seguir_'.$registro['db_id_usu'].'" style="display: '.$btn_seguir_display.'" class="btn btn-default btn_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Seguir</button>';
 								// -- FIM Botões para seguir usuarios--
 								
 								// -- Botões para deixar de seguir usuarios --
-									echo '<button type="button" id="btn_deixar_seguir_'.$registro['db_id_usu'].'" style="display: none" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Deixar de Seguir</button>';
+									echo '<button type="button" id="btn_deixar_seguir_'.$registro['db_id_usu'].'" style="display: '.$btn_deixar_seguir_display.'" class="btn btn-primary btn_deixar_seguir" data-id_usuario="'.$registro['db_id_usu'].'">Deixar de Seguir</button>';
 								// -- FIM Botões para deixar de seguir usuarios --
 
 							echo '</p>';
